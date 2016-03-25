@@ -14,10 +14,13 @@
     "react-component"
   ],
   "devDependencies": {
-    "babel": "^5.2.17",
-    "babel-core": "^5.2.17",
-    "babel-loader": "^5.0.0",
-    "babel-runtime": "^5.8.35",
+    "babel-cli": "6.6.5",
+    "babel-core": "6.7.4",
+    "babel-loader": "6.2.4",
+    "babel-preset-es2015-loose": "7.0.0",
+    "babel-preset-react": "6.5.0",
+    "babel-preset-stage-0": "6.5.0",
+    "babel-runtime": "6.6.1",
     "jsdom": "^8.0.4",
     "mocha": "^2.4.5",
     "react": "^0.14.7",
@@ -34,10 +37,13 @@
   },
   "repository": "kodyl/react-flexr",
   "author": "Kodyl ApS",
-  "contributors": [{
-    "name": "Chris Kjær Sørensen"
-  },{
-    "name": "Daniel Juhl"
-  }],
+  "contributors": [
+    {
+      "name": "Chris Kjær Sørensen"
+    },
+    {
+      "name": "Daniel Juhl"
+    }
+  ],
   "license": "MIT"
 }

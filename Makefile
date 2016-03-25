@@ -11,7 +11,7 @@ dist/%.js: lib/%.js
 clean:
 	@rm -rf ./dist
 
-build: test clean dist test-build extract-styles
+build: clean dist extract-styles
 
 dev:
 	@node ./example/server.js

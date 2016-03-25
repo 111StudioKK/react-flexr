@@ -1,20 +1,8 @@
 'use strict';
 
-var _inherits = require('babel-runtime/helpers/inherits')['default'];
-
-var _createClass = require('babel-runtime/helpers/create-class')['default'];
-
-var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
-
-var _extends = require('babel-runtime/helpers/extends')['default'];
-
-var _objectWithoutProperties = require('babel-runtime/helpers/object-without-properties')['default'];
-
-var _Object$keys = require('babel-runtime/core-js/object/keys')['default'];
-
-var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
-
 exports.__esModule = true;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _stylesheet = require('./stylesheet');
 
@@ -30,13 +18,23 @@ var _react2 = _interopRequireDefault(_react);
 
 var _utils = require('./utils');
 
-var styles = _stilr2['default'].create({
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var styles = _stilr2.default.create({
   base: {
     display: 'flex',
     flexWrap: 'wrap',
     listStyle: 'none',
     padding: 0,
-    margin: '0 -' + _utils.variables.gutter + ' ' + _utils.doubleUnit(_utils.variables.gutter)
+    margin: '0 -' + _utils.variables.gutter + ' ' + (0, _utils.doubleUnit)(_utils.variables.gutter)
   },
   leftHorizontal: {
     justifyContent: _utils.horizontal.left
@@ -56,16 +54,18 @@ var styles = _stilr2['default'].create({
   bottomVertical: {
     alignItems: _utils.vertical.bottom
   }
-}, _stylesheet2['default']);
+}, _stylesheet2.default);
 
-var Grid = (function (_Component) {
+var Grid = function (_Component) {
   _inherits(Grid, _Component);
 
   function Grid(props) {
     _classCallCheck(this, Grid);
 
-    _Component.call(this, props);
-    _utils.findBreakpoints();
+    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+
+    (0, _utils.findBreakpoints)();
+    return _this;
   }
 
   Grid.prototype.render = function render() {
@@ -80,7 +80,7 @@ var Grid = (function (_Component) {
 
     var rest = _objectWithoutProperties(_props, ['gutter', 'style', 'align', 'hAlign', 'flexCells', 'children', 'className']);
 
-    this.styles = _utils.assign({}, style, gutter ? { margin: '0 -' + gutter + ' ' + _utils.doubleUnit(gutter) } : null);
+    this.styles = (0, _utils.assign)({}, style, gutter ? { margin: '0 -' + gutter + ' ' + (0, _utils.doubleUnit)(gutter) } : null);
 
     var classes = [styles.base, className, align ? styles[align + 'Vertical'] : null, hAlign ? styles[hAlign + 'Horizontal'] : null].filter(Boolean).join(' ');
 
@@ -88,11 +88,11 @@ var Grid = (function (_Component) {
     if (gutter) parentProps.gutter = gutter;
     if (flexCells) parentProps.flex = true;
 
-    var wrappedChildren = _Object$keys(parentProps).length ? _react2['default'].Children.map(children, function (child) {
-      return child ? _react2['default'].cloneElement(child, _extends({}, parentProps)) : child;
+    var wrappedChildren = Object.keys(parentProps).length ? _react2.default.Children.map(children, function (child) {
+      return child ? _react2.default.cloneElement(child, _extends({}, parentProps)) : child;
     }) : children;
 
-    return _react2['default'].createElement(
+    return _react2.default.createElement(
       'div',
       _extends({}, rest, {
         style: this.styles,
@@ -101,18 +101,12 @@ var Grid = (function (_Component) {
     );
   };
 
-  _createClass(Grid, null, [{
-    key: 'propTypes',
-    value: {
-      gutter: _react.PropTypes.string,
-      flexCells: _react.PropTypes.bool,
-      align: _react.PropTypes.oneOf(['top', 'center', 'bottom'])
-    },
-    enumerable: true
-  }]);
-
   return Grid;
-})(_react.Component);
+}(_react.Component);
 
-exports['default'] = Grid;
-module.exports = exports['default'];
+Grid.propTypes = {
+  gutter: _react.PropTypes.string,
+  flexCells: _react.PropTypes.bool,
+  align: _react.PropTypes.oneOf(['top', 'center', 'bottom'])
+};
+exports.default = Grid;
