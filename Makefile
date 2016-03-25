@@ -22,7 +22,7 @@ extract-styles:
 test:
 	@echo "\nTesting source files, hang on..."
 	@NODE_ENV=test $(BIN)/mocha         \
-		--compilers js:babel/register     \
+		--compilers js:babel-core/register     \
 		--require lib/__tests__/testdom   \
 		./lib/__tests__/*.test.js
 
